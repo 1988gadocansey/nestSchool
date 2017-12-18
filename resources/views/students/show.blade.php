@@ -111,7 +111,7 @@
              </td>
              <td valign="top" >
                      <img   style="width:150px;height: auto;"  <?php
-                                     $pic = $student->INDEXNO;
+                                     $pic = $student->indexNo;
                                      echo $sys->picture("{!! url(\"public/albums/students/$pic.jpg\") !!}", 90)
                                      ?>   src='{{url("public/albums/students/$pic.jpg")}}' alt="  Affix student picture here"    />
              </td>

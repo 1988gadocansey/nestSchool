@@ -140,7 +140,7 @@ class CourseController extends Controller
                   ->first();?>
                           
                                  <h5 class="heading_a uk-text-bold "><u><b>PUPIL'S TERMINAL REPORT</b></u></h5>
-                                 <div style="text-align: left;margin-left: -107px ">
+                                 <div style="text-align: left;margin-left: -102px ">
                                     <p style="text-decoration: none"> <span  >Year: &nbsp;&nbsp;&nbsp;<span class="write"> <?php echo $year?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
                                         <span >Term: &nbsp;&nbsp;&nbsp;<span class="write"> <?php echo $sem?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
                                         <span style="float: right;margin-left: -100px">N<u>o</u> On Roll:&nbsp;&nbsp;&nbsp;   <span class="write"> <?php echo $sys->getClassSize($student->currentClass);?></span></span>
@@ -152,41 +152,62 @@ class CourseController extends Controller
                                     
                                 </div>
                                  <div  style="margin-left: -73px ">
-                                <table border='0' class=" " align="center"  width='900px' style='text-decoration: none'>
-                                    <tr>
-                                        <td width="" style="width:69%">
-                                            <center>
-                                                <table border='0' class="biodata" width='800px' width=""  style="margin-left: -247px" >
-                                                    <tbody>
-                                                         
-                                                        <tr>
-                                                            <td class=" " style=""><b>Name:</b>   &nbsp;&nbsp;&nbsp;&nbsp <span class="write"><?php echo strtoupper($student->title .' '.  $student->fullname);?></span></td>
-                                                        </tr>
-                                                        
-                                                         
-                                                         <tr>
-                                                             <td class=" " style=""><b>Conduct:</b>&nbsp;&nbsp;&nbsp <span class="say"> <?PHP echo   $final->conduct; ?></span></td>
-                                                             <td  class=""><b>Class:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo  strtoupper($student->currentClass) ; ?></span></td>
-                                                         </tr>
-                                                        <tr>
-                                                            <td  style=""><b>Attitude:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo  $final->attitude  ; ?></span></td> 
-                                                            <td style=""><b>Attendance:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo   $final->attendance  ; ?></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class=" " style=""><b>Interest:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo  $final->interest  ; ?></span></td> 
-                                                            <td style=""><b>Total:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo   $final->total  ; ?></span></td>
-                                                        </tr>
-                                                        
+
+                                     <table border='0' class=" " align="center"  width='900px' style='text-decoration: none'>
+                                         <table >
+                                             <tr>
+                                                 <td>
+                                             <tr>
+                                                 <td width="" style="width:69%">
+                                                     <center>
+                                                         <table border='0' class="biodata" width='800px' width=""  style="margin-left: -34px" >
+                                                             <tbody>
+
+                                                             <tr>
+                                                                 <td class=" " style=""><b>Name:</b>   &nbsp;&nbsp;&nbsp;&nbsp <span class="write"><?php echo strtoupper(  $student->fullname)?></span></td>
+                                                             </tr>
 
 
-                                                    </tbody></table> </center>
-                                        </td>
-                             
-                                        
-                                    </tr>
-                                    </tr>
-                                </table> <!-- end basic infos -->
-                                <p style="margin-left: -76px"><span>No of Subjects:&nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalSubject($student->indexNo);?></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                             <tr>
+                                                                 <td class=" " style=""><b>Conduct:</b>&nbsp;&nbsp;&nbsp;&nbsp <span class="say"> <?PHP echo   $final->conduct; ?></span></td>
+                                                                 <td  class=""><b>Class:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo  strtoupper($student->currentClass) ; ?></span></td>
+                                                             </tr>
+                                                             <tr>
+                                                                 <td  style=""><b>Attitude:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo  $final->attitude  ; ?></span></td>
+                                                                 <td style=""><b>Attendance:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo   $final->attendance  ; ?></span></td>
+                                                             </tr>
+                                                             <tr>
+                                                                 <td class=" " style=""><b>Interest:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo  $final->interest  ; ?></span></td>
+                                                                 <td style=""><b>Total:</b> &nbsp;&nbsp;&nbsp;<span class="say"><?PHP echo   $final->total  ; ?></span></td>
+                                                             </tr>
+
+
+
+                                                             </tbody>
+
+                                                         </table>
+                                                 </td>
+                                                 <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                                                 <td valign="top" >
+                                                     <img   style="width:150px;height: auto;"  <?php
+                                                     $pic = $student->indexNo;
+
+                                                     ?>   src='<?php echo url("public/albums/students/$pic.jpg")?>' alt="  Affix student picture here"    />
+                                                 </td>
+
+
+                                             </tr>
+                                         </table>
+
+                                         </center>
+                                         </td>
+
+
+                                         </tr>
+                                         </tr>
+                                     </table> <!-- end basic infos -->
+
+                                     <p style="margin-left: -417px"><span>No of Subjects:&nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalSubject($student->indexNo);?></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
                                  <span>Passed: &nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalPassed($student->indexNo);?></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Failed: &nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalFailded($student->indexNo);?></span></span>
                                  &nbsp;&nbsp;&nbsp;<span>Incomplete: &nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalUnComplete($student->indexNo);?></span></span>
@@ -493,7 +514,7 @@ class CourseController extends Controller
                   ->first();?>
                           
                                     <h5 class="heading_a uk-text-bold "><u><b>PUPIL'S TERMINAL REPORT</b></u></h5>
-                                <div style="text-align: left;margin-left: -107px ">
+                                <div style="text-align: left;margin-left: -102px ">
                                     <p style="text-decoration: none"> <span  >Year: &nbsp;&nbsp;&nbsp;<span class="write"> <?php echo $year?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
                                         <span >Term: &nbsp;&nbsp;&nbsp;<span class="write"> <?php echo $sem?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
                                         <span style="float: right;margin-left: 59px">N<u>o</u> On Roll:&nbsp;&nbsp;&nbsp;<span class="write"> <?php echo $sys->getClassSize($student->currentClass);?></span></span>
@@ -504,12 +525,15 @@ class CourseController extends Controller
                                           </p>
                                     
                                 </div>
-                                  <div  style="margin-left: -73px ">
-                                      <table border='0' class=" " align="center"  width='900px' style='text-decoration: none'>
+                                  <div  style="margin-left: -73px "
+                                    <table border='0' class=" " align="center"  width='900px' style='text-decoration: none'>
+                                          <table >
+                                              <tr>
+                                                  <td>
                                     <tr>
                                         <td width="" style="width:69%">
                                             <center>
-                                                <table border='0' class="biodata" width='800px' width=""  style="margin-left: -253px" >
+                                                <table border='0' class="biodata" width='800px' width=""  style="margin-left: -34px" >
                                                     <tbody>
                                                          
                                                         <tr>
@@ -532,7 +556,23 @@ class CourseController extends Controller
                                                         
 
 
-                                                    </tbody></table> </center>
+                                                    </tbody>
+
+                                                </table>
+                                            </td>
+                                                  <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                                                  <td valign="top" >
+                                                      <img   style="width:150px;height: auto;"  <?php
+                                                      $pic = $student->indexNo;
+
+                                                      ?>   src='<?php echo url("public/albums/students/$pic.jpg")?>' alt="  Affix student picture here"    />
+                                                  </td>
+
+
+                                              </tr>
+                                          </table>
+
+                                            </center>
                                         </td>
                              
                                         
@@ -540,7 +580,7 @@ class CourseController extends Controller
                                     </tr>
                                 </table> <!-- end basic infos -->
 
-                                 <p style="margin-left: -76px"><span>No of Subjects:&nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalSubject($student->indexNo);?></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <p style="margin-left: -350px"><span>No of Subjects:&nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalSubject($student->indexNo);?></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
                                  <span>Passed: &nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalPassed($student->indexNo);?></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Failed: &nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalFailded($student->indexNo);?></span></span>
                                  &nbsp;&nbsp;&nbsp;<span>Incomplete: &nbsp;&nbsp;&nbsp; <span class="say"> <?php echo $sys->getTotalUnComplete($student->indexNo);?></span></span>
@@ -2504,11 +2544,11 @@ class CourseController extends Controller
                                  //  dd($gradeSys);
                             $gradeArray = $sys->getGrade($total, $gradeSys);
                         
-                              $grade = $gradeArray[0]->grade;
-                              $gradePoint=@$gradeArray[0]->value;
-                               $comment=@$gradeArray[0]->comment;
+                              @$grade = $gradeArray[0]->grade;
+                              @$gradePoint=@$gradeArray[0]->value;
+                               @$comment=@$gradeArray[0]->comment;
                                 
-                            Models\AcademicRecordsModel::where("id", $keyData)->where('staff', $lecturer)->update(array("cw1" => $cw1Data, "cw2" => $cw2Data, "cw3" => $cw3Data, "hw1" => $hw1Data,"hw2" => $hw2Data, "ctest1" => $ctest1Data,"ctest2" => $ctest2Data,"project1" => $project1Data,"project2" => $project2Data,"exam" => $examTotal, "total" => $total, 'grade' => $grade, 'gpoint' => $gradePoint,'comments'=>$comment));
+                            @Models\AcademicRecordsModel::where("id", $keyData)->where('staff', $lecturer)->update(array("cw1" => $cw1Data, "cw2" => $cw2Data, "cw3" => $cw3Data, "hw1" => $hw1Data,"hw2" => $hw2Data, "ctest1" => $ctest1Data,"ctest2" => $ctest2Data,"project1" => $project1Data,"project2" => $project2Data,"exam" => $examTotal, "total" => $total, 'grade' => $grade, 'gpoint' => $gradePoint,'comments'=>$comment));
                             //Prepare("update tbl_class_members set total='$row[total]' where STUDENT='$indexno_' and  year='$school->YEAR' and term='$school->TERM'")  ;
                             
                             $totalScore= Models\AcademicRecordsModel::where("indexNo",$studentData)->where("year",$year)->where("term",$sem)->sum("total");

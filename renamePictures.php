@@ -6,23 +6,38 @@
  * Time: 12:37 PM
  */
 
-define('DB_HOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'tnsc');
+define('DB_HOST', 'localhost');
+define('DB_USERNAME', 'gadeksys_tnsc');
+define('DB_PASSWORD', 'PRINT45dull');
+define('DB_NAME', 'gadeksys_tnsc');
 //get connection
 $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if(!$mysqli){
     die("Connection failed: " . $mysqli->error);
 }
 //query to get data from the table
-$query = sprintf("SELECT * FROM student WHERE currentClass='JHS3'");
-//execute query
+$query =  "SELECT total,comments FROM assesmentsheet WHERE class LIKE 'JHS%' AND total>0 ";
+ 
 $result = $mysqli->query($query);
 //loop through the returned data
 
 foreach ($result as $row) {
-     $name=$row["name"];
-    $photo=preg_replace('/\s+/','',$name);
-     rename($_SERVER["DOCUMENT_ROOT"]."/public/albums/students/".$name.".jpg",$_SERVER["DOCUMENT_ROOT"]."/public/albums/students/".$photo.".jpg");
+     $total=$row["total"];
+     
+      $sql= "SELECT grade, value,lower,upper FROM gradingsystem WHERE type='JHS' and lower<='$total' and upper>='$total'  ";
+ 		 
+ 		$out = $mysqli->query($sql);
+//loop through the returned data
+
+		foreach ($out as $rows) {
+			$grade=$rows["grade"];
+			$value=$rows["value"];
+			$upper=$rows["upper"];
+			$lower=$rows["lower"];
+
+			$s=  "UPDATE  assesmentsheet SET grade='$grade', comments='$grade',gpoint='$value' WHERE  total  between '$lower' and '$upper' ";
+//execute query
+			//print_r($s);
+			 $mysqli->query($s);
+		}
 }

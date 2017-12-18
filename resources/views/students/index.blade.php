@@ -301,9 +301,9 @@
                             <?php
 
                                   // $photo=preg_replace('/\s+/','',$row->name);
-                            $photo=rawurlencode($row->name);
+                            $photo= $row->indexNo;
                             ?>
-                            <td> <img class=" " style="width:65px;height:70px" src='{{url("public/albums/students/$photo.JPG")}} 'alt="photo"    /></td>
+                            <td> <img class=" " style="width:65px;height:70px" src='{{url("public/albums/students/$photo.jpg")}} 'alt="photo"    /></td>
 
 
                             {{--<td> <img class=" " style="width:65px;height:70px" src='{{url("public/albums/students/$photo.jpg")}} 'alt="photo"    /></td>--}}

@@ -57,7 +57,7 @@ border-radius: 0;
                                                    
                                   <i title="click to print" onclick="javascript:printDiv('print')" class="material-icons md-36 uk-text-success"   >print</i>
                    
-                                  <a href="{{url('/report/broadsheet')}}" class="md-btn md-btn-success">View Broadsheet</a>
+                                  <a href="{{url('class/list')}}" class="md-btn md-btn-success">Back to class list</a>
                            
      </div>
  </div>
